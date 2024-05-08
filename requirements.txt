@@ -1,0 +1,4 @@
+streamlit>=1.26.0
+streamlit_pills>=0.2.0
+boto3
+openai==0.28
