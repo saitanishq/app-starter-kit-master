@@ -64,7 +64,7 @@ def search_question_in_bucket(question, bucket, prefix, keywords):
         return False, f"GPT-generated answer: {generated_answer}"
 
 # Define keywords related to female health
-female_health_keywords = ["female", "woman", "women", "girl", "ovary", "ovaries", "menstruation", "pregnancy", "breast"]
+female_health_keywords = ["female", "woman", "women", "girl", "ovary", "ovaries", "menstruation", "menstrual", "pregnancy", "breast"]
 
 st.title('Health AI Davinci')
 bucket_name = st.secrets["BUCKET_NAME"]
