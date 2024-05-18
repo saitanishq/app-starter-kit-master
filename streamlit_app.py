@@ -11,7 +11,6 @@ import numpy as np
 # Initialize AWS S3 client and SentenceTransformer model
 s3_client = boto3.client('s3')
 model = SentenceTransformer('all-MiniLM-L6-v2')
-pytrends = TrendReq(hl='en-US', tz=360)
 
 def read_json_from_s3(bucket, key):
     response = s3_client.get_object(Bucket=bucket, Key=key)
