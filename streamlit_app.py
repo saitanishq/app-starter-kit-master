@@ -101,7 +101,9 @@ prefix = st.secrets["PREFIX"]
 
 # Initialize a zero-shot classification model
 try:
-    classifier = hf_pipeline("zero-shot-classification")
+    model_name = "facebook/bart-large-mnli"
+    revision = "c626438"
+    classifier = hf_pipeline("zero-shot-classification", model=model_name, revision=revision)
 except Exception as e:
     st.error(f"Failed to load the model: {str(e)}")
 
