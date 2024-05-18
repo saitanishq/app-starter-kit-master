@@ -4,7 +4,6 @@ import json
 import openai
 import string
 from datetime import datetime
-from pytrends.request import TrendReq
 from sentence_transformers import SentenceTransformer, util
 from transformers import pipeline as hf_pipeline
 import numpy as np
