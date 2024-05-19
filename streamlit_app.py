@@ -2,18 +2,11 @@ import streamlit as st
 import boto3
 import json
 import openai
-import torch
 import string
 from datetime import datetime
 from sentence_transformers import SentenceTransformer, util
 from transformers import pipeline as hf_pipeline
 import numpy as np
-
-@st.cache
-def load_model():
-	  return torch.load("model.pt")
-
-model = load_model()
 
 # Initialize AWS S3 client and SentenceTransformer model
 s3_client = boto3.client('s3')
