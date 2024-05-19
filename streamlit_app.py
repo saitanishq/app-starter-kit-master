@@ -7,6 +7,10 @@ from datetime import datetime
 from sentence_transformers import SentenceTransformer, util
 from transformers import pipeline as hf_pipeline, AutoModelForSequenceClassification, AutoTokenizer
 import numpy as np
+import warnings
+
+# Suppress specific FutureWarnings from huggingface_hub
+warnings.filterwarnings("ignore", category=FutureWarning, module="huggingface_hub")
 
 # Initialize AWS S3 client and SentenceTransformer model
 s3_client = boto3.client('s3')
