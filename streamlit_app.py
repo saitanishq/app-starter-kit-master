@@ -100,7 +100,6 @@ bucket_name = st.secrets["BUCKET_NAME"]
 prefix = st.secrets["PREFIX"]
 
 # Initialize a zero-shot classification model
-@st.cache(allow_output_mutation=True, hash_funcs={"_thread.RLock": lambda _: None, "builtins.weakref": lambda _: None})
 try:
     tokenizer = AutoTokenizer.from_pretrained("facebook/bart-large-mnli")
     model = AutoModelForSequenceClassification.from_pretrained("facebook/bart-large-mnli")
