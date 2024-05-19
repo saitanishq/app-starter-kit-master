@@ -8,6 +8,12 @@ from sentence_transformers import SentenceTransformer, util
 from transformers import pipeline as hf_pipeline
 import numpy as np
 
+@st.cache
+def load_model():
+	  return torch.load("path/to/model.pt")
+
+model = load_model()
+
 # Initialize AWS S3 client and SentenceTransformer model
 s3_client = boto3.client('s3')
 model = SentenceTransformer('all-MiniLM-L6-v2')
