@@ -11,7 +11,7 @@ import numpy as np
 
 @st.cache
 def load_model():
-	  return torch.load("path/to/model.pt")
+	  return torch.load("model.pt")
 
 model = load_model()
 
