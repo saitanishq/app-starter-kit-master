@@ -5,7 +5,7 @@ import openai
 import string
 from datetime import datetime
 from sentence_transformers import SentenceTransformer, util
-from transformers import pipeline as hf_pipeline
+from transformers import pipeline as hf_pipeline, AutoModelForSequenceClassification, AutoTokenizer
 import numpy as np
 
 # Initialize AWS S3 client and SentenceTransformer model
@@ -100,8 +100,11 @@ bucket_name = st.secrets["BUCKET_NAME"]
 prefix = st.secrets["PREFIX"]
 
 # Initialize a zero-shot classification model
+@st.cache(allow_output_mutation=True, hash_funcs={"_thread.RLock": lambda _: None, "builtins.weakref": lambda _: None})
 try:
-    classifier = hf_pipeline("zero-shot-classification")
+    tokenizer = AutoTokenizer.from_pretrained("facebook/bart-large-mnli")
+    model = AutoModelForSequenceClassification.from_pretrained("facebook/bart-large-mnli")
+    classifier = hf_pipeline("zero-shot-classification", model=model, tokenizer=tokenizer, device=0)
 except Exception as e:
     st.error(f"Failed to load the model: {str(e)}")
 
